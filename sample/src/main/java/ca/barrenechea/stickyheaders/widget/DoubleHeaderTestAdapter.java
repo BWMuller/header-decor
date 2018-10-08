@@ -114,7 +114,7 @@ public class DoubleHeaderTestAdapter extends RecyclerView.Adapter<DoubleHeaderTe
         public SubHeaderHolder(View itemView) {
             super(itemView);
 
-            date = (TextView) itemView;
+            date = itemView.findViewById(R.id.header_text);
         }
     }
 }

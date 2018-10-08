@@ -84,6 +84,10 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
         return -1L;
     }
 
+    public int getHeaderTop(long headerId) {
+        return headerDrawHistory.get(headerId).top;
+    }
+
     @Nullable
     public View findHeaderViewUnder(float x, float y) {
         for (RecyclerView.ViewHolder holder : headerCache.values()) {

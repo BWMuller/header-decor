@@ -80,7 +80,14 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
 
     @Override
     public void onBindHeaderViewHolder(@NonNull HeaderHolder viewHolder, int position) {
-        viewHolder.header.setText("Header " + getHeaderId(position));
+        final long headerId = getHeaderId(position);
+        viewHolder.header.setText("Header " + headerId);
+        viewHolder.itemView.findViewById(R.id.header_action).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Header clicked: " + headerId, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -99,7 +106,7 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
         public HeaderHolder(View itemView) {
             super(itemView);
 
-            header = (TextView) itemView;
+            header = itemView.findViewById(R.id.header_text);
         }
     }
 }
