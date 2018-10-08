@@ -26,6 +26,8 @@ import android.widget.Toast;
 import ca.barrenechea.stickyheaders.R;
 import ca.barrenechea.stickyheaders.widget.StickyTestAdapter;
 import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderDecoration;
+import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderTouchListener;
+import ca.barrenechea.widget.recyclerview.decoration.StickyHeaderTouchListener.OnHeaderClickListener;
 
 public class StickyHeaderFragment extends BaseDecorationFragment implements RecyclerView.OnItemTouchListener {
     private StickyHeaderDecoration decor;
@@ -35,9 +37,17 @@ public class StickyHeaderFragment extends BaseDecorationFragment implements Recy
         final StickyTestAdapter adapter = new StickyTestAdapter(this.getActivity());
         decor = new StickyHeaderDecoration(adapter);
         setHasOptionsMenu(true);
+        StickyHeaderTouchListener touchListener = new StickyHeaderTouchListener(list, decor);
+        touchListener.setOnHeaderClickListener(new OnHeaderClickListener() {
+            @Override
+            public void onHeaderClick(final View header, final long headerId) {
+                Toast.makeText(getActivity(), "Header item clicked intercepted " + headerId, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         list.setAdapter(adapter);
         list.addItemDecoration(decor, 1);
+        list.addOnItemTouchListener(touchListener);
         list.addOnItemTouchListener(this);
     }
 

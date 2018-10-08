@@ -17,6 +17,8 @@
 package ca.barrenechea.stickyheaders.widget;
 
 import android.content.Context;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,7 +42,14 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         final View view = inflater.inflate(R.layout.item_test, viewGroup, false);
-
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                if (v instanceof TextView) {
+                    Toast.makeText(v.getContext(), "Item clicked: " + ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         return new ViewHolder(view);
     }
 
