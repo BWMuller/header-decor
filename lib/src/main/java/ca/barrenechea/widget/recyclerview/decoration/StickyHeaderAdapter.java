@@ -33,7 +33,7 @@ public interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
      * @param position the item position
      * @return the header id
      */
-    long getHeaderId(int position);
+    long getStickyHeaderId(int position);
 
     /**
      * Creates a new header ViewHolder.
@@ -42,7 +42,7 @@ public interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
      * @return a view holder for the created view
      */
     @NonNull
-    T onCreateHeaderViewHolder(@NonNull ViewGroup parent);
+    T onCreateStickyHeaderViewHolder(@NonNull ViewGroup parent);
 
     /**
      * Updates the header view to reflect the header data for the given position
@@ -50,5 +50,5 @@ public interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
      * @param viewHolder the header view holder
      * @param position the header's item position
      */
-    void onBindHeaderViewHolder(@NonNull T viewHolder, int position);
+    void onBindStickyHeaderViewHolder(@NonNull T viewHolder, int position);
 }

@@ -64,7 +64,7 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
     }
 
     @Override
-    public long getHeaderId(int position) {
+    public long getStickyHeaderId(int position) {
         if (position == 0) { // don't show header for first item
             return StickyHeaderDecoration.NO_HEADER_ID;
         }
@@ -73,21 +73,14 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
 
     @NonNull
     @Override
-    public HeaderHolder onCreateHeaderViewHolder(@NonNull ViewGroup parent) {
+    public HeaderHolder onCreateStickyHeaderViewHolder(@NonNull ViewGroup parent) {
         final View view = inflater.inflate(R.layout.header_test, parent, false);
         return new HeaderHolder(view);
     }
 
     @Override
-    public void onBindHeaderViewHolder(@NonNull HeaderHolder viewHolder, int position) {
-        final long headerId = getHeaderId(position);
-        viewHolder.header.setText("Header " + headerId);
-        viewHolder.itemView.findViewById(R.id.header_action).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Header clicked: " + headerId, Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void onBindStickyHeaderViewHolder(@NonNull HeaderHolder viewHolder, int position) {
+        viewHolder.header.setText("Header " + getStickyHeaderId(position));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

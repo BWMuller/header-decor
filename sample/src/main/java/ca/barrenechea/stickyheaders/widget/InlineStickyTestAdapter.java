@@ -56,20 +56,20 @@ public class InlineStickyTestAdapter
     }
 
     @Override
-    public long getHeaderId(int position) {
+    public long getStickyHeaderId(int position) {
         return (long) position / 7;
     }
 
     @NonNull
     @Override
-    public HeaderHolder onCreateHeaderViewHolder(@NonNull ViewGroup parent) {
+    public HeaderHolder onCreateStickyHeaderViewHolder(@NonNull ViewGroup parent) {
         final View view = inflater.inflate(R.layout.header_inline_test, parent, false);
         return new HeaderHolder(view);
     }
 
     @Override
-    public void onBindHeaderViewHolder(@NonNull HeaderHolder viewHolder, int position) {
-        viewHolder.header.setText(getHeaderId(position) + "");
+    public void onBindStickyHeaderViewHolder(@NonNull HeaderHolder viewHolder, int position) {
+        viewHolder.header.setText(getStickyHeaderId(position) + "");
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
