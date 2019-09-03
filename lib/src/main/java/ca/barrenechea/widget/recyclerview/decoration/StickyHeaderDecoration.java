@@ -41,6 +41,8 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
 
     private boolean renderInline;
 
+    private boolean reversed;
+
     /**
      * @param adapter the sticky header adapter to use
      */
@@ -56,6 +58,10 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
         this.headerCache = new HashMap<>();
         this.headerDrawHistory = new HashMap<>();
         this.renderInline = renderInline;
+    }
+
+    public void setReversed(boolean reversed) {
+        this.reversed = reversed;
     }
 
     /**
@@ -249,9 +255,13 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
     }
 
     private boolean showHeaderAboveItem(int itemAdapterPosition) {
-        if (itemAdapterPosition == 0) {
+        if (itemAdapterPosition == adapter.getItemCount() - 1) {
             return true;
         }
-        return adapter.getStickyHeaderId(itemAdapterPosition - 1) != adapter.getStickyHeaderId(itemAdapterPosition);
+        if (reversed) {
+            return adapter.getStickyHeaderId(itemAdapterPosition + 1) != adapter.getStickyHeaderId(itemAdapterPosition);
+        } else {
+            return adapter.getStickyHeaderId(itemAdapterPosition - 1) != adapter.getStickyHeaderId(itemAdapterPosition);
+        }
     }
 }

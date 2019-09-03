@@ -27,6 +27,9 @@ import android.view.ViewGroup;
  * @param <T> the header view holder
  */
 public interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
+
+    int getItemCount();
+
     /**
      * Returns the header id for the item at the given position.
      *
