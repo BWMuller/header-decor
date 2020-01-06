@@ -5,7 +5,7 @@ buildscript {
             'compileSdk'         : 28,
             'minSdk'             : 15,
             'targetSdk'          : 28,
-            'androidGradlePlugin': '3.4.1',
+            'androidGradlePlugin': '3.5.3',
             'bintrayRelease'     : '0.5.0',
     ]
 

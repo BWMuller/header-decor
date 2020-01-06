@@ -35,12 +35,12 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
 
     private LayoutInflater inflater;
 
-    public StickyTestAdapter(Context context) {
+    public StickyTestAdapter(@NonNull Context context) {
         inflater = LayoutInflater.from(context);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         final View view = inflater.inflate(R.layout.item_test, viewGroup, false);
         view.setOnClickListener(new OnClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class StickyTestAdapter extends RecyclerView.Adapter<StickyTestAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.item.setText("Item " + i);
     }
 
